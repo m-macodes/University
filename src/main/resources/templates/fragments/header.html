@@ -1,0 +1,38 @@
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/}">Сервис верификации продукции</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" th:classappend="${#httpServletRequest.requestURI == '/customer'} ? 'active' : ''">
+                <a class="nav-link" th:href="@{/customer}">Покупателям</a>
+            </li>
+            <li class="nav-item" th:classappend="${#httpServletRequest.requestURI == '/manufacturer'} ? 'active' : ''">
+                <a class="nav-link" th:href="@{/manufacturer}">Производителям</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasRole('MANUFACTURER')" th:classappend="${#httpServletRequest.requestURI == '/manufacturer/products'} ? 'active' : ''">
+                <a class="nav-link" th:href="@{/manufacturer/products}">Мои товары</a>
+            </li>
+            <li>
+                <form th:action="@{/verificate}" class="form-inline">
+                    <input class="form-control mx-sm-2" name="uuid" type="text" placeholder="UUID" aria-label="UUID">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Проверить UUID</button>
+                </form>
+            </li>
+        </ul>
+
+        <form sec:authorize="isAnonymous()" th:action="@{/login}">
+            <button class="btn btn-primary my-2 mr-sm-2" type="submit">Войти</button>
+        </form>
+        <form sec:authorize="isAnonymous()" th:action="@{/register}">
+            <button class="btn btn-success my-2 mr-sm-2" type="submit">Зарегистрироваться</button>
+        </form>
+        <p sec:authorize="isAuthenticated()" class= "navbar-text my-auto mr-sm-2">Добро пожаловать, <span sec:authentication="name">username</span>!</p>
+        <form method="post" sec:authorize="isAuthenticated()" th:action="@{/logout}">
+            <button class="btn btn-secondary my-2 mr-sm-2" type="submit">Выйти</button>
+        </form>
+    </div>
+</nav>

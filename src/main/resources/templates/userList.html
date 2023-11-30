@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователь</title>
+</head>
+<body>
+
+<div class="homepage">
+    <div class="homepage_container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Роль</th>
+            </tr>
+            </thead>
+            <tbody>
+                <div th:each="user : ${users}">
+                    <tr>
+                        <th scope="row"><a style="text-decoration: none;" th:href="@{/university/user/{id}(id=${user.id})}" th:text="${user.id}"></a></th>
+                        <td th:text="${user.surname} + ' ' + ${user.name} + ' ' + ${user.patronymic}">Имя</td>
+                        <td th:text="${user.role.nameRu}">Роль</td>
+                    </tr>
+                </div>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

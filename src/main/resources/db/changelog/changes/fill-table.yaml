@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: fill
+      author: macodes
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: qqq@qqq
+              - column:
+                  name: password
+                  value: $2a$12$QzqVmhgDW67IL./tmA7CAu08w1fT7kexxv1XwRe/2../5oDciCaey
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+                  value: STUDENT
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+                  value: TEACHER
