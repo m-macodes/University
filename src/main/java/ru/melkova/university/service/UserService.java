@@ -35,8 +35,8 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
-                Collections.singleton(new SimpleGrantedAuthority(user.getRole().getName()))
-//                user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList())
+//                Collections.singleton(new SimpleGrantedAuthority(user.getRole().getName()))
+                user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList())
         );
     }
 
@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
 //    }
 
     public void createNewUser(User user) {
-        user.setRole(roleRepository.findByName("STUDENT").get());
+//        user.setRole(roleRepository.findByName("STUDENT").get());
         userRepository.save(user);
     }
 }

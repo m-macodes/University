@@ -1,38 +1,41 @@
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{/}">Сервис верификации продукции</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" th:classappend="${#httpServletRequest.requestURI == '/customer'} ? 'active' : ''">
-                <a class="nav-link" th:href="@{/customer}">Покупателям</a>
-            </li>
-            <li class="nav-item" th:classappend="${#httpServletRequest.requestURI == '/manufacturer'} ? 'active' : ''">
-                <a class="nav-link" th:href="@{/manufacturer}">Производителям</a>
-            </li>
-            <li class="nav-item" sec:authorize="hasRole('MANUFACTURER')" th:classappend="${#httpServletRequest.requestURI == '/manufacturer/products'} ? 'active' : ''">
-                <a class="nav-link" th:href="@{/manufacturer/products}">Мои товары</a>
-            </li>
-            <li>
-                <form th:action="@{/verificate}" class="form-inline">
-                    <input class="form-control mx-sm-2" name="uuid" type="text" placeholder="UUID" aria-label="UUID">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Проверить UUID</button>
-                </form>
-            </li>
+<nav class="py-2 bg-body-tertiary border-bottom navbar-dark ">
+    <div class="container d-flex flex-wrap">
+        <ul class="nav me-auto">
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2 active" aria-current="page">Главная</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Курсы</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Поступление</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">О нас</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Контакты</a></li>
         </ul>
-
-        <form sec:authorize="isAnonymous()" th:action="@{/login}">
-            <button class="btn btn-primary my-2 mr-sm-2" type="submit">Войти</button>
-        </form>
-        <form sec:authorize="isAnonymous()" th:action="@{/register}">
-            <button class="btn btn-success my-2 mr-sm-2" type="submit">Зарегистрироваться</button>
-        </form>
-        <p sec:authorize="isAuthenticated()" class= "navbar-text my-auto mr-sm-2">Добро пожаловать, <span sec:authentication="name">username</span>!</p>
-        <form method="post" sec:authorize="isAuthenticated()" th:action="@{/logout}">
-            <button class="btn btn-secondary my-2 mr-sm-2" type="submit">Выйти</button>
-        </form>
+        <ul class="nav">
+            <li class="nav-item"><a th:href="@{/login}" class="nav-link link-body-emphasis px-2">Войти</a></li>
+            <li class="nav-item"><a th:href="@{/register}" class="nav-link link-body-emphasis px-2">Регистрация</a></li>
+        </ul>
     </div>
 </nav>
+<header class="py-3 mb-4 border-bottom bg-dark">
+    <div class="container d-flex flex-wrap justify-content-center">
+        <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-white   text-decoration-none">
+<!--            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>-->
+            <span class="fs-4">Название Университета</span>
+        </a>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+            <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+        </form>
+    </div>
+</header>
+
+<!-- Bootstrap JS и Popper.js (необходимы для компонентов Bootstrap) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

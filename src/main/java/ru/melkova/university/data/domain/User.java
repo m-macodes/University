@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -37,10 +39,15 @@ public class User {
     @Basic
     @Column(name = "phone_number")
     private String phoneNumber;
+    @Basic
+    @Column(name = "address")
+    private String address;
 
-    @ManyToOne
-    @JoinColumn(name = "role", referencedColumnName = "id")
-    private Role role;
+    @ManyToMany
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
 //    @ManyToOne(cascade=CascadeType.ALL)
 //    @JoinColumn(name = "address", referencedColumnName = "id", nullable = false)

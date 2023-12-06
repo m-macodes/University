@@ -2,23 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>Университет</title>
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="d-flex flex-column min-vh-100">
-<!--    <div th:insert="fragments/header :: header"></div>-->
-<main role="main" class="container">
-    <h1 class="mt-5">Проверьте купленную продукцию на подлинность</h1>
-    <p class="lead">Просто отсканируйте QR-код найденный на упаковке или внутри нее. Если у вас есть только UUID, вы
-        можете вбить его в поле выше для проверки.</p>
-</main>
-<div th:replace="fragments/footer :: footer"></div>
-<!---->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+<body>
+
+<div th:insert="~{fragments/header :: body}"></div>
+
+<!-- Hero Section -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Welcome to University Name</h1>
+            <p>Explore endless possibilities for your education journey.</p>
+            <a href="#" class="btn btn-primary">Apply Now</a>
+        </div>
+        <div class="col-lg-6">
+            <!-- Add an image or video for the hero section -->
+            <!-- Example: <img src="hero-image.jpg" alt="University Image" class="img-fluid"> -->
+        </div>
+    </div>
+</div>
+
+<!-- Featured Courses Section -->
+<div class="container mt-5">
+    <h2>Featured Courses</h2>
+    <!-- Add featured courses here -->
+    <!-- Example card:
+      <div class="card">
+        <img src="course-image.jpg" class="card-img-top" alt="Course Image">
+        <div class="card-body">
+          <h5 class="card-title">Course Title</h5>
+          <p class="card-text">Course description goes here.</p>
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    -->
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3">
+    <p>&copy; 2023 University Name. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
